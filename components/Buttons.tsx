@@ -1,34 +1,36 @@
-import { Link } from 'expo-router';
-import { type ComponentProps } from 'react';
-import {
-    StyleSheet,
-    Button,
-    View,
-    SafeAreaView,
-    Text,
-    Alert,
-  } from 'react-native';
-type Props = Omit<ComponentProps<typeof Link>, 'href'> & { href: string };
+// button.tsx
+import { Text, StyleSheet, Pressable } from 'react-native';
+
+type ButtonsProps = {
+  val: string;
+  onPress: (value: string) => void;
+};
+
+export const Buttons = ({ val, onPress }: ButtonsProps) => {
+  return (
+    <Pressable style={styles.button} onPress={() => onPress(val)}>
+      <Text style={styles.text}>{val}</Text>
+    </Pressable>
+  );
+};
+
 const styles = StyleSheet.create({
-    bt: {
-      flex: 1,
-      justifyContent: 'center',
-      marginHorizontal: 16,
-    }
-  });
-
-  function onPressLearnMore(){
-    alert("click")
-  }
-
-export const Buttons = () => {
-    return (
-        <Button
-        style={styles.bt}
-        onPress={onPressLearnMore}
-        title="Learn More"
-        color="#841584"
-        accessibilityLabel="Learn more about this purple button"
-        />
-    );
-}
+  button: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 4,
+    elevation: 3,
+    backgroundColor: 'black',
+    width: "30%",
+    marginBottom: 5
+  },
+  text: {
+    fontSize: 16,
+    lineHeight: 21,
+    fontWeight: 'bold',
+    letterSpacing: 0.25,
+    color: 'white',
+  },
+});

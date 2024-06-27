@@ -18,8 +18,8 @@ const styles = StyleSheet.create({
   },
 });
 
-export const Display = () => {
+export const Display = (props:any) => {
   return (
-      <Text style={styles.innerText}>Ecran</Text>
+      <Text style={styles.innerText}>{props.affichage}</Text>
   );
 }
